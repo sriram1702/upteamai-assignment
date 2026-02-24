@@ -3,7 +3,7 @@ import Sidebar from "./components/Sidebar";
 import Dashboard from "./components/Dashboard";
 import AddReportModal from "./components/AddReportModal";
 import { generateMockReports } from "./data/mockReports";
-import { saveReports, loadReports } from "./utils/storage";
+import { saveReports } from "./utils/storage";
 import "./App.css";
 
 function App() {
