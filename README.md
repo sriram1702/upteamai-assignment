@@ -1,70 +1,231 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# 📊 Take-Home Dashboard UI
 
-## Available Scripts
+A modern, responsive Dashboard UI built using **React** and **Chart.js**.
 
-In the project directory, you can run:
+This project demonstrates:
 
-### `npm start`
+- Clean component architecture  
+- State management using React Hooks  
+- Search and pagination  
+- Dynamic chart rendering  
+- Modal form with validation  
+- Local storage persistence  
+- Clean and maintainable code structure  
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+---
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+# 🚀 Features
 
-### `npm test`
+## 1️⃣ Report List (Left Sidebar)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Displays list of reports  
+- 12 reports per page  
+- Search reports by title  
+- Pagination (Prev / Next)  
+- Active report highlighting  
+- Add new report functionality  
 
-### `npm run build`
+---
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 2️⃣ Dashboard (Right Panel)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+When a report is selected:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- The dashboard updates dynamically  
+- Displays:
+  - 📊 Stacked Bar Chart  
+  - 🍩 Doughnut Chart  
+- Data is fully dynamic per selected report  
 
-### `npm run eject`
+---
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## 3️⃣ Add New Report
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- Opens modal popup  
+- Fields:
+  - Title (required)  
+  - Subtitle (required)  
+- Basic validation included  
+- New report added to top of list  
+- Chart data auto-generated  
+- Data stored in browser localStorage  
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+---
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+# 🏗️ Tech Stack
 
-## Learn More
+- React (Functional Components)  
+- React Hooks (useState, useEffect, useMemo)  
+- Chart.js  
+- react-chartjs-2  
+- CSS (Custom styling)  
+- LocalStorage (Data persistence)  
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+---
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+# 📁 Project Structure
 
-### Code Splitting
+```
+src/
+│
+├── components/
+│   ├── Sidebar.js
+│   ├── Dashboard.js
+│   ├── AddReportModal.js
+│
+├── data/
+│   └── mockReports.js
+│
+├── utils/
+│   └── storage.js
+│
+├── App.js
+├── App.css
+└── index.js
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+---
 
-### Analyzing the Bundle Size
+# ⚙️ Installation & Setup
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## 1️⃣ Clone the Repository
 
-### Making a Progressive Web App
+```bash
+git clone <your-repo-url>
+cd your-project-name
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## 2️⃣ Install Dependencies
 
-### Advanced Configuration
+```bash
+npm install
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+Required packages:
 
-### Deployment
+```bash
+npm install chart.js react-chartjs-2
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## 3️⃣ Start Development Server
 
-### `npm run build` fails to minify
+```bash
+npm start
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Application will run at:
+
+```
+http://localhost:3000
+```
+
+---
+
+# 🧠 How It Works
+
+## 🔹 State Management
+
+`App.js` manages:
+
+- `reports`  
+- `selectedReport`  
+- `showModal`  
+
+Reports are passed to:
+
+- `<Sidebar />`  
+- `<Dashboard />`  
+
+When a user selects a report:
+
+```js
+onSelect={setSelectedReport}
+```
+
+Dashboard re-renders automatically.
+
+---
+
+## 🔹 Search Logic
+
+- Search input updates `searchTerm`  
+- Filtering is done using `useMemo`  
+- Pagination recalculates automatically  
+
+---
+
+## 🔹 Pagination
+
+- 12 items per page  
+- Controlled using `currentPage`  
+- Prev / Next buttons disabled properly  
+
+---
+
+## 🔹 Chart Rendering
+
+Dashboard uses:
+
+- `Bar` (Stacked Chart)  
+- `Doughnut` Chart  
+
+Data is dynamically created for each report.
+
+Charts update automatically when `selectedReport` changes.
+
+---
+
+## 🔹 Data Persistence
+
+Reports are stored in:
+
+```
+localStorage
+```
+
+Using utility functions:
+
+```js
+saveReports()
+loadReports()
+```
+
+---
+
+# 🎨 Design Principles Followed
+
+- Component separation  
+- Single responsibility principle  
+- Reusable components  
+- Clean state flow (top-down)  
+- Defensive rendering (null checks)  
+- Clear folder structure  
+- No backend dependency  
+
+---
+
+# 📌 Assumptions
+
+- Data is mocked (no backend)  
+- Styling is custom CSS  
+- Focus is on UI architecture and state management  
+
+---
+
+# 🔥 Future Improvements
+
+- Add sorting  
+- Add delete report  
+- Add edit report  
+- Add animations  
+- Add dark mode  
+- Convert to TypeScript  
+- Add unit tests  
+
+---
+
+# 👨‍💻 Author 
+SRIRAM H
+
+Built as part of a Take-Home Frontend Assignment.
