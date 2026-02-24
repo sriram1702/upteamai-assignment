@@ -104,7 +104,7 @@ const Sidebar = ({
 
       {/* ===== PAGINATION ===== */}
       <div className="pagination">
-        <button
+        <button className="search-btn"
           onClick={handlePrev}
           disabled={currentPage === 1}
         >
@@ -115,7 +115,7 @@ const Sidebar = ({
           {currentPage} / {totalPages || 1}
         </span>
 
-        <button
+        <button className="search-btn"
           onClick={handleNext}
           disabled={currentPage === totalPages || totalPages === 0}
         >
